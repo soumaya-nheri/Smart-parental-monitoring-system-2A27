@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/sounds">
+        <file>click.mp3</file>
+    </qresource>
+    <qresource prefix="/stylesheet">
+        <file>Toolery.qss</file>
+    </qresource>
+</RCC>
