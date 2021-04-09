@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT       += core gui sql network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,15 +25,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    enfants.cpp \
         main.cpp \
         mainwindow.cpp \
     connection.cpp \
-    site.cpp
+    parents.cpp \
+    smtp.cpp
 
 HEADERS += \
+    enfants.h \
         mainwindow.h \
     connection.h \
-    site.h
+    parents.h \
+    smtp.h
 
 FORMS += \
         mainwindow.ui
@@ -42,3 +46,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    back.qrc
