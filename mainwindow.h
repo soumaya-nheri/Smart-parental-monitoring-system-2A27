@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include "arduino.h"
 #include <QMainWindow>
 #include "temps.h"
 #include "nutrition.h"
@@ -23,6 +23,7 @@ public:
     ~MainWindow();
 
 private slots:
+    void update_label();
     void on_ajouter_clicked();
 
     void on_modifier_clicked();
@@ -48,6 +49,12 @@ private slots:
 
     void on_recherche_textChanged(const QString &arg1);
 
+    void on_ttsup_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_dateTimeEdit_dateTimeChanged(const QDateTime &dateTime);
+
 private:
     Ui::MainWindow *ui;
     Temps t;
@@ -56,6 +63,9 @@ private:
     QNetworkAccessManager *manager;
     QNetworkRequest request;
     QMediaPlayer * sound;
+    QByteArray data; // variable contenant les données reçues
+
+    arduino A; // objet temporaire
 };
 
 #endif // MAINWINDOW_H

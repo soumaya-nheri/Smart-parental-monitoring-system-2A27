@@ -28,6 +28,7 @@ CONFIG += c++11
 
 
 SOURCES += \
+    arduino.cpp \
         main.cpp \
         mainwindow.cpp \
     connection.cpp \
@@ -35,6 +36,7 @@ SOURCES += \
     temps.cpp
 
 HEADERS += \
+    arduino.h \
         mainwindow.h \
     connection.h \
     nutrition.h \

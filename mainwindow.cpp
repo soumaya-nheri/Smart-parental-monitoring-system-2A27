@@ -18,6 +18,16 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    int ret=A.connect_arduino(); // lancer la connexion à arduino
+    switch(ret){
+    case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
+        break;
+    case(1):qDebug() << "arduino is available but not connected to :" <<A.getarduino_port_name();
+       break;
+    case(-1):qDebug() << "arduino is not available";
+    }
+     QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label())); // permet de lancer
+     //le slot update_label suite à la reception du signal readyRead (reception des données).
     ui->tabemploi->setModel(t.afficher());
      ui->tabnutrition->setModel(n.afficher());
      sound = new QMediaPlayer();
@@ -41,7 +51,20 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+void MainWindow::update_label()
+{
+    data=A.read_from_arduino();
 
+    if(data=="1")
+
+        ui->label_3->setText("reveillez-vous"); // si les données reçues de arduino via la liaison série sont égales à 1
+    // alors afficher ON
+
+    else if (data=="0")
+
+        ui->label_3->setText("OFF");   // si les données reçues de arduino via la liaison série sont égales à 0
+     //alors afficher ON
+}
 void MainWindow::on_ajouter_clicked()
 {
     sound->play();
@@ -181,7 +204,7 @@ void MainWindow::on_imprimer_clicked()
        if(pd.exec()== QDialog::Accepted) return;
        imprimante=pd.printer();
        imprimante->setOutputFormat(QPrinter::PdfFormat);
-       imprimante->setOutputFileName("Bureau/doc.pdf");
+       imprimante->setOutputFileName("C:/Users/21655/Desktop/pdf/emploi.pdf");
 
 }
 
@@ -234,4 +257,36 @@ void MainWindow::on_recherche_textChanged(const QString &arg1)
                                      "Click Cancel to exit."), QMessageBox::Cancel);
 
          ui->recherche->clear();}
+}
+
+void MainWindow::on_ttsup_clicked()
+{
+
+        QSqlQuery query;
+        query.prepare("DELETE FROM NUTRITION");
+        query.exec();
+        if(query.exec())
+        {
+            QMessageBox::critical(nullptr, QObject::tr("DELETE DB "),
+                            QObject::tr("tout est supprimer !.\n"
+                                        "Click Ok to exit."), QMessageBox::Ok);
+             ui->tabnutrition->setModel(n.afficher());
+
+        }
+
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+   A.write_to_arduino("0");
+}
+
+void MainWindow::on_dateTimeEdit_dateTimeChanged(const QDateTime &dateTime)
+{
+   QString datea =QDateTime::currentDateTime().toString(" dd MM yyyy hh:mm");
+   QString alarme=dateTime.toString();
+   if(datea==alarme)
+       A.write_to_arduino("0");
+
+
 }
