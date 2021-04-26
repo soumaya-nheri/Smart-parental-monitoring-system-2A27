@@ -51,20 +51,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-void MainWindow::update_label()
-{
-    data=A.read_from_arduino();
 
-    if(data=="1")
-
-        ui->label_3->setText("reveillez-vous"); // si les données reçues de arduino via la liaison série sont égales à 1
-    // alors afficher ON
-
-    else if (data=="0")
-
-        ui->label_3->setText("OFF");   // si les données reçues de arduino via la liaison série sont égales à 0
-     //alors afficher ON
-}
 void MainWindow::on_ajouter_clicked()
 {
     sound->play();
@@ -278,15 +265,18 @@ void MainWindow::on_ttsup_clicked()
 
 void MainWindow::on_pushButton_clicked()
 {
-   A.write_to_arduino("0");
+
+        data=A.read_from_arduino();
+
+        if(data=="1")
+
+            ui->label_25->setText("mouvement detecté"); // si les données reçues de arduino via la liaison série sont égales à 1
+
+        else if (data=="0")
+
+            ui->label_25->setText("pas de mouvements detecté");   // si les données reçues de arduino via la liaison série sont égales à 0
+
+
 }
 
-void MainWindow::on_dateTimeEdit_dateTimeChanged(const QDateTime &dateTime)
-{
-   QString datea =QDateTime::currentDateTime().toString(" dd MM yyyy hh:mm");
-   QString alarme=dateTime.toString();
-   if(datea==alarme)
-       A.write_to_arduino("0");
 
-
-}
