@@ -235,3 +235,18 @@ void MainWindow::on_recherche_textChanged(const QString &arg1)
 
          ui->recherche->clear();}
 }
+
+void MainWindow::on_verifiermvnt_clicked()
+{
+    data=A.read_from_arduino();
+
+    if(data=="1")
+
+        ui->label_23->setText("mouvement detecté"); // si les données reçues de arduino via la liaison série sont égales à 1
+    // alors afficher ON
+
+    else if (data=="0")
+
+        ui->label_23->setText("pas de mouvement");   // si les données reçues de arduino via la liaison série sont égales à 0
+     //alors afficher ON
+}

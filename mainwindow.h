@@ -9,7 +9,7 @@
 #include <QtCharts/QHorizontalStackedBarSeries>
 #include <QNetworkRequest>
 #include <QMediaPlayer>
-
+#include"arduino.h"
 namespace Ui {
 class MainWindow;
 }
@@ -48,6 +48,8 @@ private slots:
 
     void on_recherche_textChanged(const QString &arg1);
 
+    void on_verifiermvnt_clicked();
+
 private:
     Ui::MainWindow *ui;
     Temps t;
@@ -56,6 +58,9 @@ private:
     QNetworkAccessManager *manager;
     QNetworkRequest request;
     QMediaPlayer * sound;
+    QByteArray data; // variable contenant les données reçues
+
+    arduino A; // objet temporaire
 };
 
 #endif // MAINWINDOW_H
