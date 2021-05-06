@@ -134,6 +134,22 @@ QSqlQueryModel * parents::afficher_email()
 model->setQuery("select EMAIL_RESP from PARENTS   ");
     return model;
 }
+bool parents::login(QString user, QString pass){
 
+    QSqlQuery query;
+
+        QString select ="SELECT  CIN from parents where PRENOM_RES=? and PASSWORD=?";
+
+        query.prepare(select);
+        query.addBindValue(user);
+         query.addBindValue(pass);
+           query.exec();
+
+         if (query.next()){
+             return  true;
+         }
+         return  false;
+
+}
 
 

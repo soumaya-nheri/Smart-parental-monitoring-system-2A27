@@ -17,6 +17,7 @@ public:
     QString get_EMAIL_RESP() ;
     QString get_PASSWORD() ;
     QString get_PAYS() ;
+    bool login(QString,QString);
 
 
 

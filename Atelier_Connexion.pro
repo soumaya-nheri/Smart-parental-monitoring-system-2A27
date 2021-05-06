@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql network
+QT       += core gui multimedia printsupport sql network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,21 +25,28 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    dialog.cpp \
     enfants.cpp \
         main.cpp \
         mainwindow.cpp \
     connection.cpp \
+    nutrition.cpp \
     parents.cpp \
-    smtp.cpp
+    smtp.cpp \
+    temps.cpp
 
 HEADERS += \
+    dialog.h \
     enfants.h \
         mainwindow.h \
     connection.h \
+    nutrition.h \
     parents.h \
-    smtp.h
+    smtp.h \
+    temps.h
 
 FORMS += \
+        dialog.ui \
         mainwindow.ui
 
 # Default rules for deployment.
