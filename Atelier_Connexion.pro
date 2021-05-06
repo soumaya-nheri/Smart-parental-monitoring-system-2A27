@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT       += core gui multimedia printsupport sql network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,20 +25,46 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    dialog.cpp \
+    electomenage.cpp \
+    electomenage_impl.cpp \
+    enfants.cpp \
         main.cpp \
         mainwindow.cpp \
     connection.cpp \
-    site.cpp
+    notifications.cpp \
+    nutrition.cpp \
+    parents.cpp \
+    porte_impl.cpp \
+    portes.cpp \
+    smtp.cpp \
+    temps.cpp
 
 HEADERS += \
+    dialog.h \
+    electomenage.h \
+    electomenage_impl.h \
+    enfants.h \
         mainwindow.h \
     connection.h \
-    site.h
+    notifications.h \
+    nutrition.h \
+    parents.h \
+    porte_impl.h \
+    portes.h \
+    smtp.h \
+    temps.h
 
 FORMS += \
-        mainwindow.ui
+        dialog.ui \
+        electomenage.ui \
+        mainwindow.ui \
+        portes.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    back.qrc
