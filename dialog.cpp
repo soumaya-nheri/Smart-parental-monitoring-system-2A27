@@ -29,8 +29,12 @@ void Dialog::on_connecter_clicked()
 
           QString user= ui->nom->text();
            QString   pass=ui->pass->text();
+           mainwindow = new MainWindow(this);
 
-        login=P1.login(user,pass);
+           mainwindow->setWindowTitle("Gestion des Clients" );
+                 mainwindow->show(); //showMaximized()
+
+       login=P1.login(user,pass);
              if (login==true){
                mainwindow = new MainWindow(this);
 

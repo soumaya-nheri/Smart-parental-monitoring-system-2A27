@@ -43,6 +43,8 @@
 #include <QtCharts/QLegend>
 #include <QPlainTextEdit>
 #include <QPlainTextDocumentLayout>
+#include "portes.h"
+#include "electomenage.h"
 
 #define Email_RX "\\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}\\b"
 #define Name_RX "^[a-zA-Z][a-zA-Z\\s]+$"
@@ -666,3 +668,17 @@ void MainWindow::on_tout_supp_clicked()
          ui->tabnutrition->setModel(n.afficher());
 }
     }
+
+void MainWindow::on_port_clicked()
+{
+    portes *m = new portes();
+    m->show();
+}
+
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    ELECTOMENAGE *m = new ELECTOMENAGE();
+    m->show();
+}
