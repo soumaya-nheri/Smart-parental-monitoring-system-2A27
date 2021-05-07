@@ -79,7 +79,7 @@ QLineEdit {
 }</string>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>2</number>
     </property>
     <property name="iconSize">
      <size>
@@ -736,7 +736,7 @@ background: #d1d1d1;</string>
        <rect>
         <x>10</x>
         <y>0</y>
-        <width>961</width>
+        <width>981</width>
         <height>391</height>
        </rect>
       </property>
@@ -744,7 +744,7 @@ background: #d1d1d1;</string>
        <string notr="true">background:url(:/back/images.png)</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_11">
        <attribute name="title">
@@ -754,8 +754,8 @@ background: #d1d1d1;</string>
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>20</y>
-          <width>631</width>
+          <y>10</y>
+          <width>401</width>
           <height>251</height>
          </rect>
         </property>
@@ -817,8 +817,8 @@ background: #d1d1d1;</string>
         <widget class="QPushButton" name="ajouter">
          <property name="geometry">
           <rect>
-           <x>400</x>
-           <y>100</y>
+           <x>280</x>
+           <y>110</y>
            <width>91</width>
            <height>41</height>
           </rect>
@@ -860,6 +860,17 @@ background: #d1d1d1;</string>
           </rect>
          </property>
         </widget>
+       </widget>
+       <widget class="QFrame" name="statframe">
+        <property name="geometry">
+         <rect>
+          <x>410</x>
+          <y>110</y>
+          <width>511</width>
+          <height>191</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout"/>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_12">

@@ -24,6 +24,7 @@ public:
       QSqlQueryModel* afficher();
       bool modifier();
       bool supprimer(QString);
+       QVector<float> stat();
     private:
    QString pttdej,dej,diner,dater,emp;
    int calories;

@@ -64,6 +64,42 @@ MainWindow::MainWindow(QWidget *parent) :
      ui->le_id_2->setValidator(new QIntValidator(0, 9999999, this));
      ui->tab_site->setModel(S.afficher());
      ui->tab_site_2->setModel(E.afficher());
+     QVector<float> x;
+         nutrition n;
+          x=n.stat();
+         // QBarSeries *series = new QBarSeries()
+                   QBarSet *set0 = new QBarSet("100-500");
+                  QBarSet *set1 = new QBarSet("500-1000");
+                  QBarSet *set2 = new QBarSet("1000-2000");
+                  QBarSet *set3 = new QBarSet("+2000");
+
+                  *set0 << x[0];
+                  *set1 << x[1] ;
+                  *set2 << x[2] ;
+                  *set3 << x[3] ;
+          series->append(set0);
+          series->append(set1);
+          series->append(set2);
+          series->append(set3);
+
+
+        //  QChart *chart = new QChart();
+
+          //chart->legend()->hide();
+          chart->addSeries(series);
+          chart->createDefaultAxes();
+          chart->setTitle("Statistique des calories");
+
+
+          chart->legend()->setVisible(true);
+          chart->legend()->setAlignment(Qt::AlignBottom);
+
+
+
+        //  QChartView *chartView = new QChartView(chart);
+            chartView->resize(631,220);
+          chartView->setRenderHint(QPainter::Antialiasing);
+          chartView->setParent(ui->statframe);
  //manager = new QNetworkAccessManager();
         // QObject::connect(manager, &QNetworkAccessManager::finished,
              //this, [=](QNetworkReply *reply) {

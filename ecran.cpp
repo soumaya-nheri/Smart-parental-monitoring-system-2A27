@@ -64,30 +64,4 @@ ecran::ecran()
           query.bindValue(":type", type);
           return query.exec();
     }
-    void ecran::verifier()
-     {
-         QSqlQuery qry;
 
-      if (qry.exec("select * from ECRAN "))
-      {
-
-           int n=0;
-          while (qry.next())
-          {
-              qDebug () <<n;
-
-
-                n= qry.value(3).toInt();
-                if(n==1)
-                {  Notifications N;
-                      N.notifications_ecran();
-
-
-                }
-
-          }
-
-      }
-
-
-     }

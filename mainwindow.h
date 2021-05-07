@@ -7,6 +7,10 @@
 #include <QMediaPlayer>
 #include "site.h"
 #include "ecran.h"
+#include<QtCharts>
+#include<QChartView>
+#include<QLineSeries>
+#include <QtCharts/QHorizontalStackedBarSeries>
 #include <QtNetwork/QNetworkAccessManager>
 #include<QtNetwork/QNetworkReply>
 #include<QtNetwork/QNetworkRequest>
@@ -124,6 +128,13 @@ private:
     Temps t;
     Temps t2;
     nutrition n;
+    QBarSeries *series = new QBarSeries();
+    QChart *chart = new QChart();
+    QChartView *chartView = new QChartView(chart);
+    QBarSet *set0 = new QBarSet("100-500");
+   QBarSet *set1 = new QBarSet("500-1000");
+   QBarSet *set2 = new QBarSet("1000-2000");
+   QBarSet *set3 = new QBarSet("+2000");
     QMediaPlayer * sound;
     Site S;
     ecran E;

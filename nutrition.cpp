@@ -67,4 +67,50 @@ nutrition::nutrition(QString pttdej,QString dej,QString diner,int calories,QStri
       return query.exec();
 
   }
+  QVector<float> nutrition::stat()
+  {
+      QSqlQuery q1,q2,q3,q4,q5;
+  double rows,s1,s2,s3,s4;
+  rows=0;s2=0;s3=0;s4=0;s1=0;
+
+     q1.prepare("SELECT count (*)  from NUTRITION  " );
+
+                     q1.exec();
+                      if (q1.next()) {
+                      rows= q1.value(0).toInt();}
+        q2.prepare("SELECT count (*)  from NUTRITION where CALORIES  between 0 and 500 " );
+
+                                      q2.exec();
+                                       if (q2.next()) {
+                                      s1= q2.value(0).toInt();}
+    q3.prepare("SELECT count (*)  from NUTRITION where CALORIES between 500 and 1000 " );
+
+                                            q3.exec();
+                                               if (q3.next()) {
+                                              s2= q3.value(0).toInt();}
+     q4.prepare("SELECT count (*)  from NUTRITION where CALORIES between 1000 and 2000 " );
+
+                                                                                       q4.exec();
+                                                                                          if (q4.next()) {
+                                                                                         s3= q4.value(0).toInt();}
+     q5.prepare("SELECT count (*)  from NUTRITION where CALORIES > 2000  " );
+
+                                         q5.exec();
+                               if (q5.next()) {
+                             s4= q5.value(0).toInt();}
+
+  QVector<float>stats;
+  float a1 = (s1/rows)*100;
+  float a2 = (s2/rows)*100;
+  float a3 = (s3/rows)*100;
+  float a4 =  (s4/rows)*100;
+
+  stats.push_back(a1);
+  stats.push_back(a2);
+  stats.push_back(a3);
+  stats.push_back(a4);
+
+  return stats;
+  }
+
 
